@@ -49,6 +49,12 @@ whyMeTitle: "Kenapa Saya",
 
 whyMeDesc:
   "Kombinasi kemampuan teknis, kreatif, dan bisnis yang membantu menyelesaikan masalah secara menyeluruh.",
+portfolioDesc:
+  "Contoh project nyata dengan format: Masalah → Solusi → Hasil.",
+
+problemLabel: "Masalah",
+solutionLabel: "Solusi",
+resultLabel: "Hasil",
 
 },
 
@@ -101,5 +107,11 @@ softSkillsDesc:
 
 whyMeDesc:
   "A combination of technical, creative, and business skills to solve problems from multiple perspectives.",
+portfolioDesc:
+  "Real project examples using the format: Problem → Solution → Result.",
+
+problemLabel: "Problem",
+solutionLabel: "Solution",
+resultLabel: "Result",
 },
 } as const;
