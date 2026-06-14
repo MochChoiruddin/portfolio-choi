@@ -18,7 +18,7 @@ export function About() {
           <div className="grid gap-10 md:grid-cols-[0.8fr_1.4fr] md:items-center">
             <div className="relative mx-auto aspect-[4/6] w-full max-w-xs overflow-hidden rounded-[1.75rem] border border-cyan-400/20 bg-white/5 shadow-[0_0_60px_rgba(34,211,238,0.12)]">
               <Image
-                src="/Fotoku1.png"
+                src="/fotoku1.png"
                 alt="Mohammad Choiruddin"
                 fill
                 sizes="(max-width: 1200px) 100vw, 45vw"
