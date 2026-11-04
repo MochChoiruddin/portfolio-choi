@@ -60,7 +60,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="bg-white dark:bg-[#050A0F]">
+    <section id="contact">
       <div className="mx-auto max-w-5xl px-6 py-16">
         <Reveal>
           <div className="mb-8 text-center">
@@ -86,41 +86,44 @@ export function Contact() {
           <div className="grid gap-5 md:grid-cols-[1.2fr_0.8fr]">
             <form
               onSubmit={handleSubmit}
-              className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/[0.03]"
+              className="glass p-5 sm:p-6"
             >
               <div className="space-y-3">
                 <input
                   type="text"
+                  aria-label={t.contactName}
                   placeholder={t.contactName}
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-500 focus:border-cyan-400 dark:border-white/10 dark:bg-[#050A0F] dark:text-white"
+                  className="glass-field w-full rounded-xl border px-4 py-3 text-sm"
                 />
 
                 <input
                   type="email"
+                  aria-label={t.contactEmail}
                   placeholder={t.contactEmail}
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-500 focus:border-cyan-400 dark:border-white/10 dark:bg-[#050A0F] dark:text-white"
+                  className="glass-field w-full rounded-xl border px-4 py-3 text-sm"
                 />
 
                 <textarea
                   rows={4}
+                  aria-label={t.contactMessage}
                   placeholder={t.contactMessage}
                   required
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  className="w-full resize-none rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-500 focus:border-cyan-400 dark:border-white/10 dark:bg-[#050A0F] dark:text-white"
+                  className="glass-field w-full resize-none rounded-xl border px-4 py-3 text-sm"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={isSending}
-                className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-cyan-400 px-5 py-3 text-sm font-bold text-black transition hover:bg-cyan-300 disabled:cursor-not-allowed disabled:opacity-60"
+                className="mt-4 flex w-full items-center justify-center gap-2 glass-button glass-primary px-5 py-3 text-sm font-bold disabled:cursor-not-allowed disabled:opacity-60"
               >
                 <Send size={16} />
                 {isSending
@@ -131,7 +134,7 @@ export function Contact() {
               </button>
 
               {statusMessage && (
-                <p className="mt-3 text-center text-sm text-slate-600 dark:text-slate-400">
+                <p role="status" className="mt-3 text-center text-sm text-slate-600 dark:text-slate-400">
                   {statusMessage}
                 </p>
               )}
@@ -173,15 +176,15 @@ function ContactCard({
   value: string;
 }) {
   return (
-    <div className="flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-4 transition hover:border-cyan-400/40 hover:shadow-[0_0_35px_rgba(34,211,238,0.12)] dark:border-white/10 dark:bg-white/[0.03]">
-      <div className="text-cyan-400">{icon}</div>
+    <div className="glass glass-lift flex min-w-0 items-center gap-4 p-4">
+      <div className="shrink-0 text-cyan-400">{icon}</div>
 
-      <div>
+      <div className="min-w-0">
         <h3 className="text-sm font-bold text-slate-900 dark:text-white">
           {title}
         </h3>
 
-        <p className="mt-1 text-xs text-slate-600 dark:text-slate-400">
+        <p className="mt-1 break-words text-xs text-slate-600 dark:text-slate-400">
           {value}
         </p>
       </div>

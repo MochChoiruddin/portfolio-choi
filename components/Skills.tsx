@@ -84,7 +84,7 @@ export function Skills() {
         </div>
 
         <div className="mx-auto max-w-4xl">
-          <div className="grid rounded-xl bg-slate-200 p-1 dark:bg-white/10 md:grid-cols-3">
+          <div className="glass grid gap-1 p-1.5 sm:grid-cols-3">
             {skillsData.map((item) => {
               const Icon = tabIcons[item.title as keyof typeof tabIcons];
 
@@ -92,7 +92,8 @@ export function Skills() {
                 <button
                   key={item.id}
                   onClick={() => setActiveTab(item.id)}
-                  className={`flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold transition-all duration-300 md:text-sm ${
+                    aria-pressed={activeTab === item.id}
+                  className={`flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold transition-colors duration-200 md:text-sm ${
                     activeTab === item.id
                       ? "bg-cyan-400 text-black"
                       : "text-slate-600 hover:text-slate-950 dark:text-slate-400 dark:hover:text-white"
@@ -105,8 +106,8 @@ export function Skills() {
             })}
           </div>
 
-          <div className="mt-6 grid gap-6 md:grid-cols-[1.35fr_1fr]">
-            <div>
+          <div className="mt-6 grid gap-4 md:grid-cols-[1.35fr_1fr]">
+            <div className="glass p-4 sm:p-5">
               <h3 className="mb-3 text-lg font-bold text-slate-900 dark:text-white">
                 {t.skillsLabel}
               </h3>
@@ -118,7 +119,7 @@ export function Skills() {
                   return (
                     <div
                       key={skill}
-                      className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-900 transition hover:border-cyan-400/40 dark:border-white/10 dark:bg-white/[0.03] dark:text-white"
+                      className="glass glass-lift flex items-center gap-3 px-4 py-2.5 text-sm font-semibold text-slate-900 dark:text-white"
                     >
                       {Icon && <Icon size={17} className="text-cyan-400" />}
                       {skill}
@@ -128,7 +129,7 @@ export function Skills() {
               </div>
             </div>
 
-            <div>
+            <div className="glass p-4 sm:p-5">
               <h3 className="mb-3 text-lg font-bold text-slate-900 dark:text-white">
                 {t.toolsLabel}
               </h3>
@@ -137,7 +138,7 @@ export function Skills() {
                 {activeSkill.tools.map((tool) => (
                   <span
                     key={tool}
-                    className="rounded-full bg-slate-200 px-3 py-1 text-xs font-semibold text-slate-900 dark:bg-white/10 dark:text-white md:text-sm"
+                    className="glass glass-pill px-3 py-1 text-xs font-semibold text-slate-900 dark:text-white md:text-sm"
                   >
                     {tool}
                   </span>

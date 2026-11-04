@@ -1,14 +1,21 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useMotionPreference } from "@/components/useMotionPreference";
 
-export function Reveal({ children }: { children: React.ReactNode }) {
+export function Reveal({ children, className }: { children: React.ReactNode; className?: string }) {
+  const reduced = useMotionPreference();
   return (
     <motion.div
-      initial={{ opacity: 0, y: 32 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.7, ease: "easeOut" }}
+      className={className}
+      initial={false}
+      animate={reduced ? { opacity: 1, y: 0 } : undefined}
+      whileInView={reduced ? undefined : "visible"}
+      variants={{
+        visible: { opacity: [0.68, 1], y: [12, 0] },
+      }}
+      viewport={{ once: true, amount: "some" }}
+      transition={{ duration: 0.48, ease: "easeOut" }}
     >
       {children}
     </motion.div>

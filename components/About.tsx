@@ -12,18 +12,17 @@ export function About() {
   const [showBio, setShowBio] = useState(false);
 
   return (
-    <section id="about" className="bg-slate-50 dark:bg-[#08111B]">
+    <section id="about">
       <div className="mx-auto max-w-6xl px-6 py-20">
         <Reveal>
           <div className="grid gap-10 md:grid-cols-[0.8fr_1.4fr] md:items-center">
-            <div className="relative mx-auto aspect-[4/6] w-full max-w-xs overflow-hidden rounded-[1.75rem] border border-cyan-400/20 bg-white/5 shadow-[0_0_60px_rgba(34,211,238,0.12)]">
+            <div className="relative mx-auto aspect-[4/6] w-full max-w-xs glass overflow-hidden">
               <Image
                 src="/fotoku1.png"
                 alt="Mohammad Choiruddin"
                 fill
                 sizes="(max-width: 1200px) 100vw, 45vw"
                 className="object-contain"
-                priority
               />
             </div>
 
@@ -42,8 +41,9 @@ export function About() {
               </div>
 
               <button
+                aria-expanded={showBio}
                 onClick={() => setShowBio(!showBio)}
-                className="mt-6 rounded-xl border border-cyan-400/40 px-5 py-3 text-sm font-bold text-cyan-500 transition hover:bg-cyan-400 hover:text-black dark:text-cyan-400"
+                className="mt-6 glass-button accent-text px-5 py-3 text-sm font-bold"
               >
                 {showBio
                   ? language === "id"
@@ -55,7 +55,7 @@ export function About() {
               </button>
 
               {showBio && (
-                <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-6 text-slate-700 shadow-sm dark:border-white/10 dark:bg-white/[0.03] dark:text-slate-400">
+                <div className="mt-6 glass p-5 text-slate-700 dark:text-slate-300 sm:p-6">
                   <h3 className="mb-5 text-xl font-bold text-slate-950 dark:text-white">
                     {language === "id" ? "Biodata Diri" : "Personal Biodata"}
                   </h3>

@@ -10,7 +10,7 @@ export function SoftSkills() {
   const t = translations[language as keyof typeof translations];
 
   return (
-    <section className="bg-white dark:bg-[#050A0F]">
+    <section>
       <div className="mx-auto max-w-5xl px-6 py-16">
         <Reveal>
           <div className="mb-8 text-center">
@@ -31,7 +31,7 @@ export function SoftSkills() {
             {softSkills.map((skill) => (
               <span
                 key={skill.id}
-                className="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-xs font-semibold text-cyan-600 transition hover:-translate-y-1 hover:bg-cyan-400 hover:text-black dark:text-cyan-300 md:text-sm"
+                className="glass glass-pill glass-lift accent-text px-4 py-2 text-xs font-semibold md:text-sm"
               >
                 {skill[language as "id" | "en"]}
               </span>

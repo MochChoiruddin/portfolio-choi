@@ -11,7 +11,7 @@ import { Footer } from "@/components/Footer";
 
 export default function Page() {
   return (
-    <main className="min-h-screen bg-white text-slate-950 dark:bg-[#050A0F] dark:text-white">
+    <main className="portfolio-shell min-h-screen pb-3 text-slate-950 dark:text-white">
       <Navbar />
       <Hero />
       <About />

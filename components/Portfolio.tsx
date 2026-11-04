@@ -34,10 +34,8 @@ export function Portfolio() {
   return (
     <section
       id="portfolio"
-      className="relative overflow-hidden bg-white dark:bg-[#050A0F]"
+      className="relative"
     >
-      <div className="absolute left-1/2 top-0 h-[220px] w-[220px] -translate-x-1/2 rounded-full bg-cyan-400/10 blur-[120px]" />
-
       <div className="relative mx-auto max-w-5xl px-6 py-16">
         <Reveal>
           <div className="mb-8 text-center">
@@ -53,7 +51,7 @@ export function Portfolio() {
           </div>
 
           <div className="mx-auto max-w-4xl">
-            <div className="grid rounded-xl bg-slate-200 p-1 dark:bg-white/10 md:grid-cols-3">
+            <div className="glass grid gap-1 p-1.5 sm:grid-cols-3">
               {projectCategories.map((category) => {
                 const Icon =
                   categoryIcons[category as keyof typeof categoryIcons];
@@ -62,7 +60,8 @@ export function Portfolio() {
                   <button
                     key={category}
                     onClick={() => setActiveCategory(category)}
-                    className={`flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold transition-all duration-300 md:text-sm ${
+                    aria-pressed={activeCategory === category}
+                    className={`flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold transition-colors duration-200 md:text-sm ${
                       activeCategory === category
                         ? "bg-cyan-400 text-black"
                         : "text-slate-600 hover:text-slate-950 dark:text-slate-400 dark:hover:text-white"
@@ -77,37 +76,38 @@ export function Portfolio() {
 
             <div className="mt-6 grid gap-5 md:grid-cols-2">
               {filteredProjects.map((project) => (
-                <article
-                  key={project.title}
-                  className="rounded-2xl border border-slate-200 bg-white p-5 transition duration-300 hover:-translate-y-1.5 hover:border-cyan-400/40 hover:shadow-[0_0_45px_rgba(34,211,238,0.12)] dark:border-white/10 dark:bg-white/[0.035] dark:hover:bg-white/[0.06]"
-                >
-                  <h3 className="text-lg font-bold text-slate-950 dark:text-white">
-                    {project.title}
-                  </h3>
+                <Reveal key={project.title}>
+                  <article
+                    className="glass glass-lift p-5"
+                  >
+                    <h3 className="text-lg font-bold text-slate-950 dark:text-white">
+                      {project.title}
+                    </h3>
 
-                  <div className="mt-5 space-y-4">
-                    <ProjectPoint
-                      icon={<CircleAlert size={17} />}
-                      iconClassName="text-red-500"
-                      label={t.problemLabel}
-                      text={project.problem}
-                    />
+                    <div className="mt-5 space-y-4">
+                      <ProjectPoint
+                        icon={<CircleAlert size={17} />}
+                        iconClassName="text-red-500"
+                        label={t.problemLabel}
+                        text={project.problem}
+                      />
 
-                    <ProjectPoint
-                      icon={<Lightbulb size={17} />}
-                      iconClassName="text-cyan-500 dark:text-cyan-400"
-                      label={t.solutionLabel}
-                      text={project.solution}
-                    />
+                      <ProjectPoint
+                        icon={<Lightbulb size={17} />}
+                        iconClassName="text-cyan-500 dark:text-cyan-400"
+                        label={t.solutionLabel}
+                        text={project.solution}
+                      />
 
-                    <ProjectPoint
-                      icon={<TrendingUp size={17} />}
-                      iconClassName="text-green-500 dark:text-green-400"
-                      label={t.resultLabel}
-                      text={project.result}
-                    />
-                  </div>
-                </article>
+                      <ProjectPoint
+                        icon={<TrendingUp size={17} />}
+                        iconClassName="text-green-500 dark:text-green-400"
+                        label={t.resultLabel}
+                        text={project.result}
+                      />
+                    </div>
+                  </article>
+                </Reveal>
               ))}
             </div>
           </div>
