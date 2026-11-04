@@ -14,7 +14,7 @@ import { translations } from "@/data/translations";
 const roles = ["IT Support", "Designer", "Digital Marketing"];
 const sequence = roles.flatMap((role) => [role, 1800]);
 
-export function Hero() {
+export function Hero({ hasCv }: { hasCv: boolean }) {
   const { language } = useLanguage();
   const t = translations[language];
   const reduceMotion = useMotionPreference();
@@ -76,9 +76,11 @@ export function Hero() {
             <a href="#contact" className="glass-button glass-shine px-6 py-3 text-sm font-bold">
               {t.contactBtn}
             </a>
-            <a href={cvPath} download className="glass-button glass-shine px-6 py-3 text-sm font-bold">
-              {t.downloadCv}
-            </a>
+            {hasCv && (
+              <a href={cvPath} download className="glass-button glass-shine px-6 py-3 text-sm font-bold">
+                {t.downloadCv}
+              </a>
+            )}
           </div>
         </div>
 

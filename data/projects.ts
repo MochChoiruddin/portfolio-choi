@@ -1,21 +1,29 @@
 export const projectCategories = ["IT Support", "Designer", "Marketing"] as const;
 
-export const itProjects = [
+type ItProject = {
+  title: string;
+  problem: string;
+  solution: string;
+  context?: string;
+  tools: string[];
+  result?: string;
+  measurement?: string;
+};
+
+export const itProjects: ItProject[] = [
   {
     title: "Migrasi Infrastruktur Jaringan",
     problem: "Jaringan sering down dan lambat.",
     solution: "Optimasi router, switch, dan VLAN.",
-    result: "TODO: Validasi klaim downtime turun 90% dan performa naik 3×.",
-    context: "TODO: Peran, lokasi atau jenis organisasi, jumlah pengguna/perangkat, durasi, dan metode pengukuran sebelum–sesudah.",
+    // TODO: Isi context (peran, organisasi, skala, durasi), result, dan measurement. Validasi angka 90% dan 3×.
     tools: ["Router", "Switch", "VLAN"],
   },
   {
     title: "Helpdesk Management",
     problem: "Tidak ada tracking permintaan IT.",
     solution: "Implementasi ticketing system.",
-    result: "TODO: Validasi klaim waktu respons 15 menit.",
-    context: "TODO: Peran, durasi, jumlah tiket per bulan, dan cara menghitung waktu respons.",
-    tools: ["TODO: Nama tools ticketing"],
+    // TODO: Isi context (peran, durasi, tiket per bulan), tools, result, dan measurement. Validasi angka 15 menit.
+    tools: [],
   },
 ];
 

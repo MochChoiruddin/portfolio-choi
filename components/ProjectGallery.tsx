@@ -18,14 +18,6 @@ export function ProjectGallery({ tab }: { tab: GalleryTab }) {
   const categories = [...new Set(works.map((work) => work.category))];
   const visibleWorks = category === null ? works : works.filter((work) => work.category === category);
 
-  if (works.length === 0) {
-    return (
-      <p className="glass mt-6 p-5 text-sm text-slate-600 dark:text-slate-300">
-        {isIndonesian ? "TODO: Tambahkan karya asli untuk tab ini." : "TODO: Add original work to this tab."}
-      </p>
-    );
-  }
-
   return (
     <div className="mt-6">
       <div role="group" aria-label={isIndonesian ? "Filter kategori karya" : "Filter work by category"} className="flex flex-wrap gap-2">

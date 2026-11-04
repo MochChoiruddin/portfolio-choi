@@ -9,7 +9,7 @@ import { translations } from "@/data/translations";
 import { Mail, Send } from "lucide-react";
 import { FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 
-export function Contact() {
+export function Contact({ hasCv }: { hasCv: boolean }) {
   const { language } = useLanguage();
   const t = translations[language as keyof typeof translations];
 
@@ -160,9 +160,11 @@ export function Contact() {
                 title={t.whatsappLabel}
                 value="+62 896-5077-6455"
               />
-              <a href={cvPath} download className="glass-button inline-flex px-5 py-3 text-sm font-bold">
-                {t.downloadCv}
-              </a>
+              {hasCv && (
+                <a href={cvPath} download className="glass-button inline-flex px-5 py-3 text-sm font-bold">
+                  {t.downloadCv}
+                </a>
+              )}
             </div>
           </div>
         </Reveal>

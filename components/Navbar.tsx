@@ -9,7 +9,7 @@ import { Download, Menu, Moon, Sun, UserCircle2, X } from "lucide-react";
 
 const noop = () => () => {};
 
-export function Navbar() {
+export function Navbar({ hasCv }: { hasCv: boolean }) {
   const { theme, setTheme } = useTheme();
   const { language, setLanguage } = useLanguage();
   const mounted = useSyncExternalStore(noop, () => true, () => false);
@@ -66,9 +66,11 @@ export function Navbar() {
                 className="glass-button grid size-9 place-items-center" aria-label="Toggle theme">
                 {mounted && theme === "dark" ? <Sun size={15} /> : <Moon size={15} />}
               </button>
-              <a href={cvPath} download className="glass-button glass-primary flex items-center gap-1.5 px-3 py-2 text-xs font-bold">
-                Download CV <Download size={13} />
-              </a>
+              {hasCv && (
+                <a href={cvPath} download className="glass-button glass-primary flex items-center gap-1.5 px-3 py-2 text-xs font-bold">
+                  Download CV <Download size={13} />
+                </a>
+              )}
             </div>
           </div>
         </div>

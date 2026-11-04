@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Reveal } from "@/components/Reveal";
 import { ProjectGallery } from "@/components/ProjectGallery";
-import { itProjects, projectCategories } from "@/data/projects";
+import { galleryWorks, itProjects, projectCategories } from "@/data/projects";
 import { useLanguage } from "@/components/LanguageProvider";
 import { translations } from "@/data/translations";
 import {
@@ -14,6 +14,14 @@ import {
   Lightbulb,
   TrendingUp,
 } from "lucide-react";
+
+const availableCategories = projectCategories.filter(
+  (category) => category === "IT Support" || galleryWorks.some((work) => work.tab === category),
+);
+
+function isPublishedText(value?: string) {
+  return Boolean(value?.trim() && !/\bTODO\b/i.test(value));
+}
 
 const categoryIcons = {
   "IT Support": Monitor,
@@ -47,8 +55,8 @@ export function Portfolio() {
           </div>
 
           <div className="mx-auto max-w-4xl">
-            <div className="glass grid gap-1 p-1.5 sm:grid-cols-3">
-              {projectCategories.map((category) => {
+            <div className="glass grid gap-1 p-1.5 sm:grid-flow-col sm:auto-cols-fr">
+              {availableCategories.map((category) => {
                 const Icon =
                   categoryIcons[category];
 
@@ -72,47 +80,56 @@ export function Portfolio() {
 
             {activeCategory === "IT Support" ? (
               <div className="mt-6 grid gap-5 md:grid-cols-2">
-                {itProjects.map((project) => (
-                  <Reveal key={project.title}>
-                    <article
-                      className="glass glass-lift p-5"
-                    >
-                      <h3 className="text-lg font-bold text-slate-950 dark:text-white">
-                        {project.title}
-                      </h3>
+                {itProjects.map((project) => {
+                  const tools = project.tools.filter(isPublishedText);
+                  return (
+                    <Reveal key={project.title}>
+                      <article
+                        className="glass glass-lift p-5"
+                      >
+                        <h3 className="text-lg font-bold text-slate-950 dark:text-white">
+                          {project.title}
+                        </h3>
 
-                      <p className="mt-2 text-xs leading-5 text-slate-600 dark:text-slate-300">{project.context}</p>
-                      <ul className="mt-3 flex flex-wrap gap-2" aria-label={t.toolsLabel}>
-                        {project.tools.map((tool) => (
-                          <li key={tool} className="glass glass-pill px-2.5 py-1 text-xs font-semibold">{tool}</li>
-                        ))}
-                      </ul>
+                        {isPublishedText(project.context) && (
+                          <p className="mt-2 text-xs leading-5 text-slate-600 dark:text-slate-300">{project.context}</p>
+                        )}
+                        {tools.length > 0 && (
+                          <ul className="mt-3 flex flex-wrap gap-2" aria-label={t.toolsLabel}>
+                            {tools.map((tool) => (
+                              <li key={tool} className="glass glass-pill px-2.5 py-1 text-xs font-semibold">{tool}</li>
+                            ))}
+                          </ul>
+                        )}
 
-                      <div className="mt-5 space-y-4">
-                        <ProjectPoint
-                          icon={<CircleAlert size={17} />}
-                          iconClassName="text-red-500"
-                          label={t.problemLabel}
-                          text={project.problem}
-                        />
+                        <div className="mt-5 space-y-4">
+                          <ProjectPoint
+                            icon={<CircleAlert size={17} />}
+                            iconClassName="text-red-500"
+                            label={t.problemLabel}
+                            text={project.problem}
+                          />
 
-                        <ProjectPoint
-                          icon={<Lightbulb size={17} />}
-                          iconClassName="text-cyan-500 dark:text-cyan-400"
-                          label={t.solutionLabel}
-                          text={project.solution}
-                        />
+                          <ProjectPoint
+                            icon={<Lightbulb size={17} />}
+                            iconClassName="text-cyan-500 dark:text-cyan-400"
+                            label={t.solutionLabel}
+                            text={project.solution}
+                          />
 
-                        <ProjectPoint
-                          icon={<TrendingUp size={17} />}
-                          iconClassName="text-green-500 dark:text-green-400"
-                          label={t.resultLabel}
-                          text={project.result}
-                        />
-                      </div>
-                    </article>
-                  </Reveal>
-                ))}
+                          {project.result && isPublishedText(project.result) && isPublishedText(project.measurement) && (
+                            <ProjectPoint
+                              icon={<TrendingUp size={17} />}
+                              iconClassName="text-green-500 dark:text-green-400"
+                              label={t.resultLabel}
+                              text={project.result + " " + project.measurement}
+                            />
+                          )}
+                        </div>
+                      </article>
+                    </Reveal>
+                  );
+                })}
               </div>
             ) : (
               <ProjectGallery key={activeCategory} tab={activeCategory} />
