@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
+import { cvPath, linkedinUrl } from "@/data/contact";
 import { Reveal } from "@/components/Reveal";
 import { useLanguage } from "@/components/LanguageProvider";
 import { translations } from "@/data/translations";
@@ -150,7 +151,8 @@ export function Contact() {
               <ContactCard
                 icon={<FaLinkedinIn size={18} />}
                 title={t.linkedinLabel}
-                value="linkedin.com/in/mochchoiruddin"
+                value={linkedinUrl.replace(/^https:\/\/(www\.)?/, "")}
+                href={linkedinUrl}
               />
 
               <ContactCard
@@ -158,6 +160,9 @@ export function Contact() {
                 title={t.whatsappLabel}
                 value="+62 896-5077-6455"
               />
+              <a href={cvPath} download className="glass-button inline-flex px-5 py-3 text-sm font-bold">
+                {t.downloadCv}
+              </a>
             </div>
           </div>
         </Reveal>
@@ -170,10 +175,12 @@ function ContactCard({
   icon,
   title,
   value,
+  href,
 }: {
   icon: React.ReactNode;
   title: string;
   value: string;
+  href?: string;
 }) {
   return (
     <div className="glass glass-lift flex min-w-0 items-center gap-4 p-4">
@@ -185,7 +192,7 @@ function ContactCard({
         </h3>
 
         <p className="mt-1 break-words text-xs text-slate-600 dark:text-slate-400">
-          {value}
+          {href ? <a href={href} target="_blank" rel="noopener noreferrer" className="accent-text underline">{value}</a> : value}
         </p>
       </div>
     </div>

@@ -2,6 +2,7 @@
 
 import { useTheme } from "next-themes";
 import { useEffect, useState, useSyncExternalStore } from "react";
+import { cvPath } from "@/data/contact";
 import { navLinks } from "@/data/portfolio-data";
 import { useLanguage } from "@/components/LanguageProvider";
 import { Download, Menu, Moon, Sun, UserCircle2, X } from "lucide-react";
@@ -65,7 +66,7 @@ export function Navbar() {
                 className="glass-button grid size-9 place-items-center" aria-label="Toggle theme">
                 {mounted && theme === "dark" ? <Sun size={15} /> : <Moon size={15} />}
               </button>
-              <a href="/cv-mohammad-choiruddin.pdf" download className="glass-button glass-primary flex items-center gap-1.5 px-3 py-2 text-xs font-bold">
+              <a href={cvPath} download className="glass-button glass-primary flex items-center gap-1.5 px-3 py-2 text-xs font-bold">
                 Download CV <Download size={13} />
               </a>
             </div>

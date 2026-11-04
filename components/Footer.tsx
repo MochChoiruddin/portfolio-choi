@@ -2,6 +2,7 @@
 
 import { Mail, ArrowUp } from "lucide-react";
 import { FaGithub, FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
+import { linkedinUrl } from "@/data/contact";
 import { useLanguage } from "@/components/LanguageProvider";
 
 export function Footer() {
@@ -40,7 +41,7 @@ export function Footer() {
 
           <div className="flex flex-wrap items-center justify-center gap-3">
             <FooterIcon href="mailto:mochchoiruddin99@gmail.com" icon={<Mail size={17} />} />
-            <FooterIcon href="https://www.linkedin.com/in/mohammad-choiruddin-618160206?utm_source=share_via&utm_content=profile&utm_medium=member_android" icon={<FaLinkedinIn />} />
+            <FooterIcon href={linkedinUrl} icon={<FaLinkedinIn />} />
             <FooterIcon href="https://wa.me/6289650776455" icon={<FaWhatsapp />} />
             <FooterIcon href="https://www.instagram.com/moch_choiruddin?igsh=NHhiM3lzeDE3aThl" icon={<FaInstagram />} />
             <FooterIcon href="https://github.com/moch-choiruddin" icon={<FaGithub />} />

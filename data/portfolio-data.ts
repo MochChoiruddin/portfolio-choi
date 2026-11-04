@@ -33,39 +33,6 @@ export const softSkills = [
   },
 ];
 
-export const projectCategories = ["IT Support", "Designer", "Marketing"];
-
-export const projects = [
-  {
-    category: "IT Support",
-    title: "Migrasi Infrastruktur Jaringan",
-    problem: "Jaringan sering down dan lambat.",
-    solution: "Optimasi router, switch, dan VLAN.",
-    result: "Downtime turun 90%, performa naik 3x.",
-  },
-  {
-    category: "IT Support",
-    title: "Helpdesk Management",
-    problem: "Tidak ada tracking permintaan IT.",
-    solution: "Implementasi ticketing system.",
-    result: "Response time turun menjadi 15 menit.",
-  },
-  {
-    category: "Designer",
-    title: "Brand Identity System",
-    problem: "Visual brand tidak konsisten.",
-    solution: "Membuat guideline dan template.",
-    result: "Brand lebih konsisten dan profesional.",
-  },
-  {
-    category: "Marketing",
-    title: "Digital Awareness Campaign",
-    problem: "Engagement konten rendah.",
-    solution: "Strategi konten dan ads.",
-    result: "Reach dan engagement meningkat.",
-  },
-];
-
 export const workflowSteps = [
   {
     number: "01",

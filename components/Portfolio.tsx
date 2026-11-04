@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { Reveal } from "@/components/Reveal";
-import { projectCategories, projects } from "@/data/portfolio-data";
+import { ProjectGallery } from "@/components/ProjectGallery";
+import { itProjects, projectCategories } from "@/data/projects";
 import { useLanguage } from "@/components/LanguageProvider";
 import { translations } from "@/data/translations";
 import {
@@ -18,18 +19,13 @@ const categoryIcons = {
   "IT Support": Monitor,
   Designer: Palette,
   Marketing: BarChart3,
-  "Digital Marketing": BarChart3,
 };
 
 export function Portfolio() {
   const { language } = useLanguage();
   const t = translations[language as keyof typeof translations];
 
-  const [activeCategory, setActiveCategory] = useState(projectCategories[0]);
-
-  const filteredProjects = projects.filter(
-    (project) => project.category === activeCategory
-  );
+  const [activeCategory, setActiveCategory] = useState<(typeof projectCategories)[number]>(projectCategories[0]);
 
   return (
     <section
@@ -54,7 +50,7 @@ export function Portfolio() {
             <div className="glass grid gap-1 p-1.5 sm:grid-cols-3">
               {projectCategories.map((category) => {
                 const Icon =
-                  categoryIcons[category as keyof typeof categoryIcons];
+                  categoryIcons[category];
 
                 return (
                   <button
@@ -74,42 +70,53 @@ export function Portfolio() {
               })}
             </div>
 
-            <div className="mt-6 grid gap-5 md:grid-cols-2">
-              {filteredProjects.map((project) => (
-                <Reveal key={project.title}>
-                  <article
-                    className="glass glass-lift p-5"
-                  >
-                    <h3 className="text-lg font-bold text-slate-950 dark:text-white">
-                      {project.title}
-                    </h3>
+            {activeCategory === "IT Support" ? (
+              <div className="mt-6 grid gap-5 md:grid-cols-2">
+                {itProjects.map((project) => (
+                  <Reveal key={project.title}>
+                    <article
+                      className="glass glass-lift p-5"
+                    >
+                      <h3 className="text-lg font-bold text-slate-950 dark:text-white">
+                        {project.title}
+                      </h3>
 
-                    <div className="mt-5 space-y-4">
-                      <ProjectPoint
-                        icon={<CircleAlert size={17} />}
-                        iconClassName="text-red-500"
-                        label={t.problemLabel}
-                        text={project.problem}
-                      />
+                      <p className="mt-2 text-xs leading-5 text-slate-600 dark:text-slate-300">{project.context}</p>
+                      <ul className="mt-3 flex flex-wrap gap-2" aria-label={t.toolsLabel}>
+                        {project.tools.map((tool) => (
+                          <li key={tool} className="glass glass-pill px-2.5 py-1 text-xs font-semibold">{tool}</li>
+                        ))}
+                      </ul>
 
-                      <ProjectPoint
-                        icon={<Lightbulb size={17} />}
-                        iconClassName="text-cyan-500 dark:text-cyan-400"
-                        label={t.solutionLabel}
-                        text={project.solution}
-                      />
+                      <div className="mt-5 space-y-4">
+                        <ProjectPoint
+                          icon={<CircleAlert size={17} />}
+                          iconClassName="text-red-500"
+                          label={t.problemLabel}
+                          text={project.problem}
+                        />
 
-                      <ProjectPoint
-                        icon={<TrendingUp size={17} />}
-                        iconClassName="text-green-500 dark:text-green-400"
-                        label={t.resultLabel}
-                        text={project.result}
-                      />
-                    </div>
-                  </article>
-                </Reveal>
-              ))}
-            </div>
+                        <ProjectPoint
+                          icon={<Lightbulb size={17} />}
+                          iconClassName="text-cyan-500 dark:text-cyan-400"
+                          label={t.solutionLabel}
+                          text={project.solution}
+                        />
+
+                        <ProjectPoint
+                          icon={<TrendingUp size={17} />}
+                          iconClassName="text-green-500 dark:text-green-400"
+                          label={t.resultLabel}
+                          text={project.result}
+                        />
+                      </div>
+                    </article>
+                  </Reveal>
+                ))}
+              </div>
+            ) : (
+              <ProjectGallery key={activeCategory} tab={activeCategory} />
+            )}
           </div>
         </Reveal>
       </div>

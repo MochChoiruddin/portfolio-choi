@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { cvPath, linkedinUrl } from "@/data/contact";
 import type { MouseEvent, ReactNode } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
@@ -59,7 +60,7 @@ export function Hero() {
             {t.heroDesc}
           </p>
           <div className="hero-enter hero-step-4 mt-6 flex flex-wrap justify-center gap-3 md:justify-start">
-            <SocialIcon label="LinkedIn" icon={<FaLinkedinIn />} href="https://www.linkedin.com/in/mohammad-choiruddin-618160206?utm_source=share_via&utm_content=profile&utm_medium=member_android" />
+            <SocialIcon label="LinkedIn" icon={<FaLinkedinIn />} href={linkedinUrl} />
             <SocialIcon
               label="WhatsApp"
               icon={<FaWhatsapp />}
@@ -68,12 +69,15 @@ export function Hero() {
             <SocialIcon label="Instagram" icon={<FaInstagram />} href="https://www.instagram.com/moch_choiruddin?igsh=NHhiM3lzeDE3aThl" />
             <SocialIcon label="GitHub" icon={<FaGithub />} href="https://github.com/moch-choiruddin" />
           </div>
-          <div className="hero-enter hero-step-4 mt-6 flex flex-col justify-center gap-3 sm:flex-row md:justify-start">
+          <div className="hero-enter hero-step-4 mt-6 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap md:justify-start">
             <a href="#portfolio" className="glass-button glass-primary glass-shine px-6 py-3 text-sm font-bold">
               {t.portfolioBtn} →
             </a>
             <a href="#contact" className="glass-button glass-shine px-6 py-3 text-sm font-bold">
               {t.contactBtn}
+            </a>
+            <a href={cvPath} download className="glass-button glass-shine px-6 py-3 text-sm font-bold">
+              {t.downloadCv}
             </a>
           </div>
         </div>

@@ -26,8 +26,9 @@ export const translations = {
       "Pendekatan kerja yang terstruktur untuk menghasilkan solusi yang efektif, terukur, dan berkelanjutan.",
 
     contactTitle: "Hubungi Saya",
-    contactDesc:
-      "Tertarik untuk bekerja sama? Hubungi saya untuk rekrutmen, freelance, atau kolaborasi.",
+    // TODO: Pilih fokus kontak: cari pekerjaan atau terima klien freelance.
+    contactDesc: "Silakan hubungi saya melalui formulir di bawah.",
+    downloadCv: "Download CV",
     contactName: "Nama",
     contactEmail: "Email",
     contactMessage: "Pesan Anda...",
@@ -50,7 +51,7 @@ whyMeTitle: "Kenapa Saya",
 whyMeDesc:
   "Kombinasi kemampuan teknis, kreatif, dan bisnis yang membantu menyelesaikan masalah secara menyeluruh.",
 portfolioDesc:
-  "Contoh project nyata dengan format: Masalah → Solusi → Hasil.",
+  "Studi kasus IT Support dan galeri karya desain serta digital marketing.",
 
 problemLabel: "Masalah",
 solutionLabel: "Solusi",
@@ -85,8 +86,8 @@ resultLabel: "Hasil",
       "A structured workflow to deliver effective, measurable, and sustainable solutions.",
 
     contactTitle: "Let's Connect",
-    contactDesc:
-      "Interested in working together? Feel free to contact me for recruitment, freelance projects, or collaboration.",
+    contactDesc: "Please get in touch using the form below.",
+    downloadCv: "Download CV",
     contactName: "Name",
     contactEmail: "Email",
     contactMessage: "Your Message...",
@@ -108,7 +109,7 @@ softSkillsDesc:
 whyMeDesc:
   "A combination of technical, creative, and business skills to solve problems from multiple perspectives.",
 portfolioDesc:
-  "Real project examples using the format: Problem → Solution → Result.",
+  "IT Support case studies and a gallery of design and digital marketing work.",
 
 problemLabel: "Problem",
 solutionLabel: "Solution",
